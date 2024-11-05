@@ -48,6 +48,7 @@ console.log(calculate(5));*/
 
 //OOP
 //Object literals
+/*
 const rectangle = {
     //Length and width are properties
     length: 5,
@@ -59,10 +60,10 @@ const rectangle = {
     }
 };
 
-rectangle.calculateArea();
+rectangle.calculateArea();*/
 
 //Factory function (Return an object)
-function createCircle(radius){
+/*function createCircle(radius){
     return {
         //If key and value are the same, you can remove key ES6.
         radius,
@@ -74,10 +75,10 @@ function createCircle(radius){
 }
 
 const circle = createCircle(5);
-circle.draw();
+circle.draw();*/
 
 //Constuctor function (Uses this and new Keywords)
-function Circle(radius){
+/*function Circle(radius){
     this.radius = radius,
     this.draw = function() {
         console.log('draw another');
@@ -89,5 +90,26 @@ const otherCircle = new Circle(1);
 otherCircle.draw();
 //Functions are objects.
 // {} - References this keyword in function
-Circle.call({}, 1);
+Circle.call({}, 1);*/
+
+/*
+Stopwatch Excercise 
+*/
+
+function Stopwatch() {
+    this.duration = 0,
+    this.start = function() {
+        this.duration = setInterval(this.start, 1000);
+        console.log(this.duration);
+    }
+    this.stop = function() {
+        clearInterval(this.duration);
+        console.log(this.duration);
+    }
+    this.reset = function() {
+
+    }
+ }
+
+ let sw = new Stopwatch();
 
