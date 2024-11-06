@@ -97,18 +97,37 @@ Stopwatch Excercise
 */
 
 function Stopwatch() {
-    this.duration = 0,
+    let startTime, endTime, running, duration = 0;
     this.start = function() {
-        this.duration = setInterval(this.start, 1000);
-        console.log(this.duration);
+        if(running){
+            throw new Error('Stopwatch already running.');
+        }
+        running = true;
+
+        startTime = new Date();
     }
     this.stop = function() {
-        clearInterval(this.duration);
-        console.log(this.duration);
+        if(!running){
+            throw new Error('Stopwatch already stopped.')
+        }
+        running = false;
+
+        endTime = new Date();
+        const seconds = (endTime.getTime() - startTime.getTime()) / 1000;
+        duration += seconds;
     }
     this.reset = function() {
+        startTime = null;
+        endTime = null;
+        running = false;
+        duration = 0;
 
     }
+
+    Object.defineProperty(this, 'duration', {
+        get: function() {return duration}
+        
+    });
  }
 
  let sw = new Stopwatch();
